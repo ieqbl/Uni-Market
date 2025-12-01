@@ -3,12 +3,11 @@ export type Product = {
   name: string;
   price: number;
   image?: string;
-  description: string;
+  description?: string;
 };
 
 export const addToCart = (product: Product) => {
   const cart = JSON.parse(localStorage.getItem("cart") || "[]");
-  // جلوگیری از اضافه شدن تکراری
   if (!cart.find((p: Product) => p.id === product.id)) {
     cart.push(product);
     localStorage.setItem("cart", JSON.stringify(cart));
